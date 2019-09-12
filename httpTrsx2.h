@@ -96,6 +96,11 @@
 			//uint16_t idx;
 		}respMsg;
 
+		struct _do1trsx
+		{
+			int8_t sm0;
+		}do1trsx;
+
 		#if defined(__AVR__) && defined(__GNUC__)
 			Client *client;
 		#else

@@ -201,7 +201,7 @@ void setup(void)
 	delay(2000);
 
 	//2) Set trsx[0] 
-	httpTrsx_setClient(&trsx[0], (Client*) &client);//Only for Arduinochar strval[30];//client.setTimeout(1000);
+	httpTrsx_setClient(&trsx[0], (Client*) &client);	//Only for Arduinochar strval[30];//client.setTimeout(1000);
 	httpTrsx_setupServerByIP(&trsx[0], IPaddr_server, 80);
 	httpTrsx_setURI(&trsx[0], "/jsondecode1.php");
 	httpTrsx_setHost(&trsx[0], "192.168.1.54");
@@ -209,7 +209,7 @@ void setup(void)
 	//Puede ser con una Fx o a traves de HeaderLine libre... eso por definir...
 	//httpTrsx_setApiKey(&trsx[0], "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1MzU0MjczNTVfcGFibG8iLCJkZXZpY2VfaWQiOiI1YjdmMjc3ZmVmNGFkNjgxYjIwM2I0NDQiLCJlbWFpbCI6InBhYmxvZG9uYXlyZUBnbWFpbC5jb20iLCJpYXQiOjE1NjQwODgwMjR9.G8BWFQ1O_KH4hVfibYSlGd-UqQLdWZ1d_sxonbhqANc");
 	httpTrsx_setHdrLine(&trsx[0],
-			"api_key_write: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1MzU0MjczNTVfcGFibG8iLCJkZXZpY2VfaWQiOiI1YjdmMjc3ZmVmNGFkNjgxYjIwM2I0NDQiLCJlbWFpbCI6InBhYmxvZG9uYXlyZUBnbWFpbC5jb20iLCJpYXQiOjE1NjQwODgwMjR9.G8BWFQ1O_KH4hVfibYSlGd-UqQLdWZ1d_sxonbhqANc");
+	        "api_key_write: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1MzU0MjczNTVfcGFibG8iLCJkZXZpY2VfaWQiOiI1YjdmMjc3ZmVmNGFkNjgxYjIwM2I0NDQiLCJlbWFpbCI6InBhYmxvZG9uYXlyZUBnbWFpbC5jb20iLCJpYXQiOjE1NjQwODgwMjR9.G8BWFQ1O_KH4hVfibYSlGd-UqQLdWZ1d_sxonbhqANc");
 	//
 	httpTrsx_setExecInterval_ms(&trsx[0], 0);    //ms
 	httpTrsx_setExecMode(&trsx[0], EM_RUN_ONCE);    //RUN_ONCE EM_RUN_INTERVAL
@@ -225,10 +225,10 @@ void setup(void)
 	//
 	//httpTrsx_setApiKey(&trsx[1], "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1MzU0MjczNTVfcGFibG8iLCJkZXZpY2VfaWQiOiI1YjdmMjc3ZmVmNGFkNjgxYjIwM2I0NDQiLCJlbWFpbCI6InBhYmxvZG9uYXlyZUBnbWFpbC5jb20iLCJpYXQiOjE1NjQwODgwMjR9.G8BWFQ1O_KH4hVfibYSlGd-UqQLdWZ1d_sxonbhqANc");
 	httpTrsx_setHdrLine(&trsx[1],
-			"api_key_read: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1MzU0MjczNTVfcGFibG8iLCJkZXZpY2VfaWQiOiI1YjdmMjc3ZmVmNGFkNjgxYjIwM2I0NDQiLCJlbWFpbCI6InBhYmxvZG9uYXlyZUBnbWFpbC5jb20iLCJpYXQiOjE1NjQwODgwMjR9.G8BWFQ1O_KH4hVfibYSlGd-UqQLdWZ1d_sxonbhqANc");
+	        "api_key_read: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1MzU0MjczNTVfcGFibG8iLCJkZXZpY2VfaWQiOiI1YjdmMjc3ZmVmNGFkNjgxYjIwM2I0NDQiLCJlbWFpbCI6InBhYmxvZG9uYXlyZUBnbWFpbC5jb20iLCJpYXQiOjE1NjQwODgwMjR9.G8BWFQ1O_KH4hVfibYSlGd-UqQLdWZ1d_sxonbhqANc");
 	//
 	httpTrsx_setExecInterval_ms(&trsx[1], 500);	//ms
-	httpTrsx_setExecMode(&trsx[1], EM_RUN_INTERVAL);//RUN_ONCE EM_RUN_INTERVAL
+	httpTrsx_setExecMode(&trsx[1], EM_RUN_INTERVAL);	//RUN_ONCE EM_RUN_INTERVAL
 #ifdef HTTPTRSX_DEBUG
 	httpTrsx_UARTdebug_enabled(&trsx[1], TRUE);//TRUE
 	#endif
@@ -263,8 +263,8 @@ uint8_t openwire_flag[NUM_IC][LTC_NUM_CELLS];
 uint8_t stack_overCurrent[NUM_IC];
 uint8_t stack_overTemperature[NUM_IC];
 
-float internal_digital_powerF[NUM_IC];//digital power supply, nominal:[2.7V-3.6V]
-float internal_analog_powerF[NUM_IC];//analog power supply, nominal: [4.5V-5.5V]
+float internal_digital_powerF[NUM_IC];	//digital power supply, nominal:[2.7V-3.6V]
+float internal_analog_powerF[NUM_IC];	//analog power supply, nominal: [4.5V-5.5V]
 float internal_die_tempF[NUM_IC];
 float internal_socF[NUM_IC];	//SOC
 
@@ -293,8 +293,7 @@ float uv_12v = 2.5;	// + FACTCORR_12V;//>= 0.0016V
 static uint16_t stack_voltage(char *buff)
 {
 	strcpy(buff, "\"d13\":");
-	json_cNumericArr(stack_voltage_ifcF, CNUM_FLOAT, NUM_IC,
-			(buff + strlen(buff)));
+	json_cNumericArr(stack_voltage_ifcF, CNUM_FLOAT, NUM_IC, (buff + strlen(buff)));
 	return strlen(buff);
 }
 static uint16_t stack_current(char *buff)
@@ -306,33 +305,30 @@ static uint16_t stack_current(char *buff)
 static uint16_t stack_temperature(char *buff)
 {
 	strcpy(buff, "\"d15\":");
-	json_cNumericArr(stack_temperatureF, CNUM_FLOAT, NUM_IC,
-			(buff + strlen(buff)));
+	json_cNumericArr(stack_temperatureF, CNUM_FLOAT, NUM_IC, (buff + strlen(buff)));
 	return strlen(buff);
 }
 static uint16_t allstacks_uvFlag(char *buff)
 {
 	strcpy(buff, "\"d10\":");
-	json_cNumericArrBi(uv_flag, CNUM_UINT8, NUM_IC, LTC_NUM_CELLS,
-			(buff + strlen(buff)));
+	json_cNumericArrBi(uv_flag, CNUM_UINT8, NUM_IC, LTC_NUM_CELLS, (buff + strlen(buff)));
 	return strlen(buff);
 }
 static uint16_t allstacks_ovFlag(char *buff)
 {
 	strcpy(buff, "\"d11\":");
-	json_cNumericArrBi(ov_flag, CNUM_UINT8, NUM_IC, LTC_NUM_CELLS,
-			(buff + strlen(buff)));
+	json_cNumericArrBi(ov_flag, CNUM_UINT8, NUM_IC, LTC_NUM_CELLS, (buff + strlen(buff)));
 	return strlen(buff);
 }
 
 struct _ethSend
 {
-	unsigned stack_voltage :1;
-	unsigned stack_current :1;
-	unsigned stack_temperature :1;
-	unsigned allstacks_uvFlag :1;
-	unsigned allstacks_ovFlag :1;
-	unsigned __a :3;
+		unsigned stack_voltage :1;
+		unsigned stack_current :1;
+		unsigned stack_temperature :1;
+		unsigned allstacks_uvFlag :1;
+		unsigned allstacks_ovFlag :1;
+		unsigned __a :3;
 } ethSend;
 
 void enableFlagS(void)
@@ -347,36 +343,62 @@ void enableFlagS(void)
 #define NUMMAX 5
 
 PTRFX_retUINT16_T_arg1_PCHAR ethSend_pfx[NUMMAX] =
-{ stack_voltage, stack_current, stack_temperature, allstacks_uvFlag,
-		allstacks_ovFlag, };
+{ stack_voltage, stack_current, stack_temperature, allstacks_uvFlag, allstacks_ovFlag, };
 
 int8_t httpTrsx_scheduler(char *jsonCstr);
 
-void ethTrsx_job(void)
+struct _ethApp 
 {
-char buff[20];	
-	//int8_t cod_ret = 0;
-static uint8_t idx;
-	static uint8_t bit;
-	int8_t i, n;
+	struct _ethAppTx
+	{
+		uint8_t idx;
+		uint8_t bit;
+		int8_t sm0;
+	}tx;
+	struct _ethAppRx
+	{
+		int8_t sm0;
+	}rx;
 
+}ethApp;
+
+const struct _ethApp ethApp_Zeroes={0};
+void ethTrsx_job_reset(void)
+{
+	ethApp = ethApp_Zeroes;
+}
+int8_t ethTrsx_job(void)//especific User
+{
+	int8_t cod_ret = 0;
+	
+	char buff[20];
+	int8_t i, n;
 	static uint8_t *pf = (uint8_t*) &ethSend;
 
-	//added:
+	//Tx
 	#define JSONCSTR_MAXSIZE (400)
 	char jsonCstr[JSONCSTR_MAXSIZE];
 	char *pjsonCstr;
 	uint16_t nbytes;
-	//
-	static int8_t sm0;
 	int8_t found1;
 	int8_t found0;
 	//
+	
+	//++--
+	//Rx
+	char stream[40];
+	JSON json;
+	int8_t httpTrsx_job_codret, cod;
+	int8_t ii;
+	static int8_t iilast;
+	
+	//--++
+	//
 	jsonCstr[0] = '\0';
-	if (sm0 == 0)
+	if (ethApp.tx.sm0 == 0)
 	{
 		//load-balance
-		if (idx < 3)
+		if (ethApp.tx.idx < 3)
 			n = 1;
 		else
 			n = 2;
@@ -390,14 +412,13 @@ static uint8_t idx;
 		UART_printStrk(FS("EMPEZANDO:"));
 		for (i = 0; i < n; i++)
 		{
-			if (*pf & (1 << bit++))
+			if (*pf & (1 << ethApp.tx.bit++))
 			{
-				
-//++--
-strcpy(buff,"\nidx: ");
-json_cInteger(idx, &buff[strlen(buff)]);
-UART_printlnStr(buff);
-//--++				
+				//++--
+				strcpy(buff, "\nidx: ");
+				json_cInteger(ethApp.tx.idx, &buff[strlen(buff)]);
+				UART_printlnStr(buff);
+				//--++				
 				//1) clear flag
 				//BitTo0(*pf, bit);
 
@@ -419,28 +440,26 @@ UART_printlnStr(buff);
 				}
 				UART_printlnStrk(FS("Antes de convertir"));
 				//
-				nbytes = ethSend_pfx[idx](pjsonCstr);
+				nbytes = ethSend_pfx[ethApp.tx.idx](pjsonCstr);
 				pjsonCstr += nbytes;
 				UART_printlnStrk(FS("Despues de convertir"));
 				//
 				found1 = 1;
 			}
 
-			if (++idx >= NUMMAX)
+			if (++ethApp.tx.idx >= NUMMAX)//termino de analizar todos los flags
 			{
-				idx = 0x00;
+				ethApp.tx.idx = 0x00;
 				pf = (uint8_t*) &ethSend;
-				bit = 0;
-				//cod_ret = 1;//termino de analizar todos los flags
+				ethApp.tx.bit = 0;
 				break;
 			}
 			else
 			{
-				//bit++;
-				if (idx % 8 == 0)
+				if (ethApp.tx.idx % 8 == 0)
 				{
 					pf++;
-					bit = 0;
+					ethApp.tx.bit = 0;
 				}
 			}
 		}
@@ -449,62 +468,20 @@ UART_printlnStr(buff);
 		{
 			strcat(pjsonCstr, "}");
 
-UART_printlnStrk(FS("}"));
+			UART_printlnStrk(FS("}"));
 		}
 
-UART_printlnStr(jsonCstr);
-		sm0++;
+		UART_printlnStr(jsonCstr);
+		ethApp.tx.sm0++;
 	}
 
-	if (sm0 == 1)
+	if (ethApp.tx.sm0 == 1)
 	{
 		UART_printlnStr(jsonCstr);
-		
-		if (httpTrsx_scheduler(jsonCstr) == 1) //en el 1er envio el buffer[] se envia sin ningun problema
-		{
-			sm0 = 0x00;
 
-			UART_printlnStrk(FS("FIN"));
-
-			httpTrsx_setExecMode(&trsx[0], EM_RUN_ONCE);
-			//delay(500);
-		}
 		//despues del primer envio, ya no interesa la direccion del buffer
-	}
-
-	//return cod_ret;
-}
-
-//////////////////////////////////////////////////////
-int8_t httpTrsx_scheduler(char *jsonCstr)
-{
-	static int8_t sm0;
-	int8_t cod_ret = 0;
-	
-	//++--
-	//x reading from server
-	char stream[15];
-	int8_t cod=0;
-	JSON json;
-	//
-	int8_t ii;
-	static int8_t iilast;
-	//--++
-
-//  if (sm0 == 0)
-//  {
-//      if (httpTrsx_job(&trsx[0], 0, jsonCstr, strlen(jsonCstr), (void*)NULL, 0) == 1) 
-//      {
-//      //sm0++;
-//    	  UART_printlnStrk(FS("httpTrsx_job END"));
-//      cod_ret = 1;
-//    }
-//  }
-
-	if (sm0 == 0)
-	{
-		cod_ret = httpTrsx_job(&trsx[0], 0, jsonCstr, strlen(jsonCstr), stream, sizeof(stream));
-		if (cod_ret > 0)
+		httpTrsx_job_codret = httpTrsx_job(&trsx[0], 0, jsonCstr, strlen(jsonCstr), stream, sizeof(stream));
+		if (httpTrsx_job_codret > 0)
 		{
 			do
 			{
@@ -522,76 +499,31 @@ int8_t httpTrsx_scheduler(char *jsonCstr)
 					else if (strcmp(json.name, "num") == 0)
 					{
 						double doub = strtod(json.strval, NULL);
-						ii = (int8_t )doub;
+						ii = (int8_t) doub;
 						if (iilast != ii)
 						{
 							iilast = ii;
-							UART_printStrk(FS("+++++++++++++++++++++++++++"));	
-							if ( ii > 0)              //False
+							
+							if (ii > 0)              //False
 								digitalWrite(LED3, HIGH);
 							else
-								digitalWrite(LED3, LOW);	
+								digitalWrite(LED3, LOW);
 						}
 					}
 				}
 			} while (cod == 0);
-			//
-			if (cod_ret == 1)              //finish transmision
-			{
-				UART_printlnStrk(FS("httpTrsx_job END:1"));
-				cod_ret = 1;
-			}
+		
 		}
-		else if (cod_ret == -1)
+		if ( (httpTrsx_job_codret == 1) || (httpTrsx_job_codret == -1))
 		{
-			UART_printlnStrk(FS("httpTrsx_job END:-1"));
+			ethApp.tx.sm0 = 0x00;
+			UART_printlnStrk(FS("FIN"));
+			httpTrsx_setExecMode(&trsx[0], EM_RUN_ONCE);
+			//delay(500);
 			cod_ret = 1;
 		}
 	}
 
-	/*else if (sm0 == 1)
-	 {
-	 JSON jsonr[1]; //aqui seria conveniente si es null el json de entrada, entonces no envia nada
-	 cod_ret = httpTrsx_job(&trsx[1], 1, &jsonr, sizeof(jsonr)/sizeof(JSON), stream, sizeof(stream));
-	 if (cod_ret > 0)
-	 {
-	 do
-	 {
-	 json.name = (void*)NULL;
-	 cod = jsonDecode(stream, sizeof(stream), &json);
-	 if (json.name != NULL)
-	 {
-	 UART_printStrk(FS("\n"));
-	 if (strcmp(json.name, "m1") == 0)
-	 {
-	 }
-	 else if (strcmp(json.name, "ch2") == 0)
-	 {
-	 }
-	 else if (strcmp(json.name, "num") == 0)
-	 {
-	 double doub= strtod(json.strval, NULL);
-	 if ( ((int)doub) > 0)//False
-	 {
-	 //UART_printStrk(FS("LED TURN ON\n"));
-	 digitalWrite(LED3,HIGH);
-	 }
-	 else
-	 {
-	 //UART_printStrk(FS("LED TURN OFF\n"));
-	 digitalWrite(LED3,LOW);
-	 }
-	 }
-	 }
-	 }while (cod == 0);
-	 //
-	 if (cod_ret == 1)//finish transmision
-	 {
-	 sm0 = 0x00;
-	 }
-	 }
-	 }
-	 */
 	return cod_ret;
 }
 
@@ -599,7 +531,7 @@ int8_t httpTrsx_scheduler(char *jsonCstr)
 uint8_t l;
 void loop(void)
 {
-	//
+	
 	char buff[15];
 	strcpy(buff, "\n<<");
 	itoa(l, &buff[3], 10);
